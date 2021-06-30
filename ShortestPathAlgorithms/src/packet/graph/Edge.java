@@ -11,24 +11,16 @@ package packet.graph;
  */
 public class Edge {
     
-    private int src, dst, w;
+    public int src, dst, w;
 
+    public Edge() {
+        //iniciamos todo con 0
+        src = dst = w = 0;
+    }
+    
     public Edge(int src, int dst, int w) {
         this.src = src;
         this.dst = dst;
         this.w = w;
     }
-
-    public int getSrc() {
-        return src;
-    }
-
-    public int getDst() {
-        return dst;
-    }
-
-    public int getW() {
-        return w;
-    }
-    
 }

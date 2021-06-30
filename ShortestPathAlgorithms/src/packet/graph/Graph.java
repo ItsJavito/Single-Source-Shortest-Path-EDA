@@ -5,8 +5,6 @@
  */
 package packet.graph;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Javier Olazábal
@@ -18,8 +16,7 @@ public class Graph
         utilzando scanner por el momento
         NO OLVIDAR
     */
-    
-    Scanner sc = new Scanner(System.in);
+   
     public int v,e;
     public Edge edge[];
 
@@ -28,15 +25,22 @@ public class Graph
         this.v = V;
         //numero de arcos
         this.e = E;
+        edge = new Edge[E];
         //ingreso de datos
-        System.out.println("source dest weight");
         for(int i = 0; i < e ; i++){
             //cambiar a ingreso por texto
-            System.out.println("Edge" + i + ": ");
-            int src = sc.nextInt();
-            int dst = sc.nextInt();
-            int w = sc.nextInt();
-            edge[i] = new Edge(src, dst , w);
+            edge[i] = new Edge();
         }
     }
+
+    @Override
+    public String toString() {
+        String s = "Nodos: " + Integer.toString(v) + " Arcos: " + Integer.toString(e);
+        s += '\n' + "Src\t" + "dst\t" + "w\n"; 
+        for(int i = 0; i < e ; ++i){
+            s += Integer.toString(edge[i].src) + '\t' + Integer.toString(edge[i].dst) + '\t' + Integer.toString(edge[i].w) + '\n';
+        }
+        return s;
+    }
+    
 }
