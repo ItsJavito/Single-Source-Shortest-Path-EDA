@@ -19,9 +19,18 @@ public class Main {
     
     public static void main(String[] args) throws FileNotFoundException 
     {
+        /*
+            Paso 1: Preparamos el ingreso de la informacion
+            del grafo orientado que vamos a trabajar 
+            debe estar en un formato tal que:
+        
+            CantVertices CantArcos
+            Origen Destino Peso 
+            Origen Destino Peso 
+            .... CantArcos veces
+        */
         File file = new File("test\\Graph.txt");
         Scanner sc = new Scanner(file);
-        int src = 1;
 //        public Graph(int V, int E)
         int V = sc.nextInt();
         int E = sc.nextInt();
@@ -36,9 +45,21 @@ public class Main {
             g.edge[z].w = sc.nextInt();
             z++;
         }
-        
+        //imprimimos la información que nos viene del archivo del texto
+        // para comprobar que sea correcta, podemos obviar esto
         System.out.println(g.toString());
         
+        /*
+            Paso 2: Ejectuamos el algoritmo correspondiente
+
+            A continuación haremos la ejecución del algoritmo de Bellman-Ford 
+            para el problema de la ruta más corta en todos los nodos del grafo
+            Se comenzará instanciando un objeto del algoritmo y después se 
+            ejecutará para todos los nodos
+        
+        */
+        
+        //instanciamos un objeto del algoritmo de bellmanFord
         BellmanFord BellmanFord = new BellmanFord();
         
         int[][] distBellman = new int[V+1][V+1];
@@ -52,6 +73,8 @@ public class Main {
         printSP(distBellman);
         
     }
+    
+    
     
     public static void printSP(int[][] dist)
     {
