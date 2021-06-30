@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import packet.algorithms.BellmanFord;
+import packet.algorithms.FloydWarshall;
 import packet.graph.Graph;
 
 /**
@@ -48,10 +49,14 @@ public class Main {
             g.edge[z].w = sc.nextInt();
             z++;
         }
+        //Generamos la matriz de adyacencia del grafo 
+        
+        g.GenerateAdMatrix();
         //imprimimos la información que nos viene del archivo del texto
         // para comprobar que sea correcta, podemos obviar esto
         System.out.println(g.toString());
-        
+        System.out.println("Matriz Adyacencia");
+        printSP(g.AdMatrix);
         
         /*
         ************************************************************************
@@ -75,8 +80,17 @@ public class Main {
             distBellman[i] = BellmanFord.Algorithm(g, i);
         }
         
+        //FloyWarshall algoritmo ejecucion
+        
+        FloydWarshall floydWarshall = new FloydWarshall();
+        int [][] distFloyd = floydWarshall.algorithm(g.AdMatrix);
+        
         //mostramos el arreglo con todas las rutas más cortas por todos los nodos del grafo
+        System.out.println("Bellman-ford");
         printSP(distBellman);
+        
+        System.out.println("FloydWarshall");
+        printSP(distFloyd);
         
     }
     
@@ -92,7 +106,7 @@ public class Main {
         for(int i = 1; i < dist.length ; ++i){
             System.out.print(i + "\t\t");
             for(int j = 1; j < dist[i].length ; ++j){
-                if(dist[i][j] == Integer.MAX_VALUE){System.out.print("Infinite\t\t"); continue;}
+                if(dist[i][j] == Integer.MAX_VALUE || dist[i][j] == 999999999){System.out.print("Inf.\t\t"); continue;}
                 System.out.print(dist[i][j] + "\t\t");
             }
             System.out.println("\n");

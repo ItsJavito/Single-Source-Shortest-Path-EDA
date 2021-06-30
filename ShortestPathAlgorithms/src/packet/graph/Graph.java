@@ -5,6 +5,8 @@
  */
 package packet.graph;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Javier Olazábal
@@ -19,7 +21,8 @@ public class Graph
    
     public int v,e;
     public Edge edge[];
-
+    public int AdMatrix[][];
+    
     public Graph(int V, int E) {
         //numero de vertices 
         this.v = V;
@@ -30,6 +33,20 @@ public class Graph
         for(int i = 0; i < e ; i++){
             //cambiar a ingreso por texto
             edge[i] = new Edge();
+        }
+    }
+    public void GenerateAdMatrix(){
+        
+        AdMatrix = new int[v+1][v+1];
+        for(int i = 0; i <= v ; ++i){
+            for(int j = 0; j <= v ; ++j){
+                if(i != j) AdMatrix[i][j] = 999999999;
+                
+            }
+        }
+        
+        for(int i = 0; i < e ; i++){
+            AdMatrix[edge[i].src][edge[i].dst] = edge[i].w;
         }
     }
 
