@@ -5,6 +5,7 @@
  */
 package packet.main;
 
+import java.util.Scanner;
 import packet.algorithms.BellmanFord;
 import packet.graph.Graph;
 
@@ -16,9 +17,13 @@ public class Main {
     
     public static void main(String[] args) 
     {
+        Scanner sc = new Scanner(System.in);
         int src = 0;
 //        public Graph(int V, int E)
-        Graph g = new Graph(5,5);
+        int V = sc.nextInt();
+        int E = sc.nextInt();
+        
+        Graph g = new Graph(V,E);
         
         BellmanFord BellmanFord = new BellmanFord();
         
@@ -27,7 +32,7 @@ public class Main {
         
         for(int i = 0; i < distBellman.length ; i++){
             System.out.print("Nodo " + i + ": ");
-            System.out.println(distBellman[0]);
+            System.out.println(distBellman[i]);
         }
         
     }
