@@ -19,7 +19,7 @@ public class Main {
     
     public static void main(String[] args) throws FileNotFoundException 
     {
-        File file = new File("C:\\Users\\Javier Olazábal\\Desktop\\Estudio\\EDA\\Repo_TrabajoEDA\\ShortestPathAlgorithms\\test\\Graph.txt");
+        File file = new File("test\\Graph.txt");
         Scanner sc = new Scanner(file);
         int src = 1;
 //        public Graph(int V, int E)
