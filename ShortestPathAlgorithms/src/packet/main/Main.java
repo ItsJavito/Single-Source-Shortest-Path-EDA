@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException 
     {
         /*
+        ************************************************************************
             Paso 1: Preparamos el ingreso de la informacion
             del grafo orientado que vamos a trabajar 
             debe estar en un formato tal que:
@@ -28,15 +29,17 @@ public class Main {
             Origen Destino Peso 
             Origen Destino Peso 
             .... CantArcos veces
+        ************************************************************************
         */
+        
         File file = new File("test\\Graph.txt");
         Scanner sc = new Scanner(file);
-//        public Graph(int V, int E)
+        
+        //public Graph(int V, int E)
         int V = sc.nextInt();
         int E = sc.nextInt();
-        /*
-            Ingreso de la info del grafo a través de archivo de texto
-        */
+        
+        //Ingreso de la info del grafo a través de archivo de texto
         Graph g = new Graph(V,E);
         int z = 0;
         while(sc.hasNextLine()){
@@ -49,14 +52,16 @@ public class Main {
         // para comprobar que sea correcta, podemos obviar esto
         System.out.println(g.toString());
         
+        
         /*
+        ************************************************************************
             Paso 2: Ejectuamos el algoritmo correspondiente
 
             A continuación haremos la ejecución del algoritmo de Bellman-Ford 
             para el problema de la ruta más corta en todos los nodos del grafo
             Se comenzará instanciando un objeto del algoritmo y después se 
             ejecutará para todos los nodos
-        
+        ************************************************************************
         */
         
         //instanciamos un objeto del algoritmo de bellmanFord
@@ -70,6 +75,7 @@ public class Main {
             distBellman[i] = BellmanFord.Algorithm(g, i);
         }
         
+        //mostramos el arreglo con todas las rutas más cortas por todos los nodos del grafo
         printSP(distBellman);
         
     }
