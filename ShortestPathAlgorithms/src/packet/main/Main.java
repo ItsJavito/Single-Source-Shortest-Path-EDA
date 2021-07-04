@@ -54,9 +54,10 @@ public class Main {
         g.GenerateAdMatrix();
         //imprimimos la información que nos viene del archivo del texto
         // para comprobar que sea correcta, podemos obviar esto
-        System.out.println(g.toString());
-        System.out.println("Matriz Adyacencia");
-        printSP(g.AdMatrix);
+        
+//System.out.println(g.toString());
+        //System.out.println("Matriz Adyacencia");
+        //printSP(g.AdMatrix);
         
         /*
         ************************************************************************
@@ -75,25 +76,26 @@ public class Main {
         int[][] distBellman = new int[V+1][V+1];
         
         //Bellman-ford para cada nodo desde 1 hasta el máximo nodo
+        double startTimeBellman = System.currentTimeMillis();
         for(int i = 1; i <= V ; ++i)
         {
             distBellman[i] = BellmanFord.Algorithm(g, i);
         }
+        double stopTimeBellman = System.currentTimeMillis();
+        double timeBellman = stopTimeBellman - startTimeBellman;
+        System.out.println("Bellman: " + timeBellman);
         
-        //FloyWarshall algoritmo ejecucion
         
+        
+        //FloydWarshall algoritmo ejecucion
+        double startTimeFloyd = System.currentTimeMillis();
         FloydWarshall floydWarshall = new FloydWarshall();
         int [][] distFloyd = floydWarshall.algorithm(g.AdMatrix);
-        
-        //mostramos el arreglo con todas las rutas más cortas por todos los nodos del grafo
-        System.out.println("Bellman-ford");
-        printSP(distBellman);
-        
-        System.out.println("FloydWarshall");
-        printSP(distFloyd);
-        
+        double stopTimeFloyd= System.currentTimeMillis();
+        double timefloyd = stopTimeFloyd - startTimeFloyd;
+        System.out.println("Floyd: " + timefloyd);
+
     }
-    
     
     
     public static void printSP(int[][] dist)

@@ -45,6 +45,7 @@ public class Graph
             }
         }
         
+        
         for(int i = 0; i < e ; i++){
             AdMatrix[edge[i].src][edge[i].dst] = edge[i].w;
         }
